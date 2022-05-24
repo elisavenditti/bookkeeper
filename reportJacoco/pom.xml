@@ -29,7 +29,7 @@
         </dependency>
         <!-- tested module's dependency -->
         <dependency>
-            <artifactId>bookkeeper-server</artifactId>
+            <artifactId>prova</artifactId>
             <groupId>org.apache.bookkeeper</groupId>
             <version>4.16.0-SNAPSHOT</version>
         </dependency>

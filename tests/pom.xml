@@ -42,6 +42,16 @@
     <module>integration</module>
     <module>scripts</module>
   </modules>
+
+
+  <dependencies>
+    <dependency>
+      <artifactId>bookkeeper-server</artifactId>
+      <groupId>org.apache.bookkeeper</groupId>
+      <version>4.16.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
   <build>
     <plugins>
 

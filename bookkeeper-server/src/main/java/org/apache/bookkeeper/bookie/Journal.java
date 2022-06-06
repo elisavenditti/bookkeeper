@@ -843,8 +843,7 @@ public class Journal extends BookieCriticalThread implements CheckpointSource {
      * @return scanOffset - represents the byte till which journal was read
      * @throws IOException
      */
-    public long scanJournal(long journalId, long journalPos, JournalScanner scanner)
-        throws IOException {
+    public long scanJournal(long journalId, long journalPos, JournalScanner scanner) throws IOException {
         JournalChannel recLog;
         if (journalPos <= 0) {
             recLog = new JournalChannel(journalDirectory, journalId, journalPreAllocSize, journalWriteBufferSize,

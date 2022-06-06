@@ -913,6 +913,8 @@
             <compilerArg>-Xlint:unchecked</compilerArg>
             <!-- https://issues.apache.org/jira/browse/MCOMPILER-205 -->
             <compilerArg>-Xpkginfo:always</compilerArg>
+<!--            ISW2 ADD-->
+            <compilerArg>-XDignore.symbol.file</compilerArg>
 	      </compilerArgs>
         </configuration>
       </plugin>
@@ -1097,9 +1099,7 @@
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.6</version>
-            <configuration>
-              <dataFile>target/jacoco.exec</dataFile>
-            </configuration>
+
             <executions>
               <execution>
                 <id>pre-unit-test</id>

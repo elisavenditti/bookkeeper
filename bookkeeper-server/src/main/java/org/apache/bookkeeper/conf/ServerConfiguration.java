@@ -3061,6 +3061,10 @@ public class ServerConfiguration extends AbstractConfiguration<ServerConfigurati
      * Validate the configuration.
      * @throws ConfigurationException
      */
+
+
+
+    // ISW2
     public void validate() throws ConfigurationException {
         // generate config def
         ConfigDef configDef = ConfigDef.of(ServerConfiguration.class);

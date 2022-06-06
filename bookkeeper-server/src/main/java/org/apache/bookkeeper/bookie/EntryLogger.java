@@ -834,7 +834,7 @@ public class EntryLogger {
         }
     }
 
-    public ByteBuf internalReadEntry(long ledgerId, long entryId, long location, boolean validateEntry)
+    public ByteBuf  internalReadEntry(long ledgerId, long entryId, long location, boolean validateEntry)
             throws IOException {
         long entryLogId = logIdForOffset(location);
         long pos = posForOffset(location);

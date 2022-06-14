@@ -1,4 +1,5 @@
 package org.apache.bookkeeper.util;
+import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -8,9 +9,12 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.PosixFileAttributes;
+import java.nio.file.attribute.PosixFilePermission;
 import java.util.*;
 
 @RunWith(Parameterized.class)
@@ -20,29 +24,41 @@ public class TestHardLink extends TestCase{
     public static Collection<Object[]> data(){
         // Return a set (testedInstance, firstParam, expectedResult)
         File file = null;
+        File fileNotReadable = null;
         File notExisting = null;
         String path = null;
+        String subPath = null;
+        String subpath2 = null;
         try {
             path = new File(".\\").getCanonicalPath();
             System.out.println(path);
             int len = "bookkeeper\\bookkeeper-server".length();
             int totalLen = path.length();
-            String subPath = path.substring(0, totalLen-len);
+            subPath = path.substring(0, totalLen-len);
+            subpath2 = subPath+"notRead.txt";
             subPath = subPath + "prova.txt";
             System.out.println(subPath);
 
             Path p = Paths.get(subPath);
+            Path p2 = Paths.get(subpath2);
             Files.createFile(p);
-            file = new File(subPath);
-            notExisting = new File(subPath.replace('a', 'b'));
-        }  catch (IOException e) {
+            Files.createFile(p2);
+
+        } catch(FileAlreadyExistsException ignore){
+            System.out.println("cretion skipped");
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+        file = new File(subPath);
+        fileNotReadable = new File(subpath2);
+        fileNotReadable.setReadable(false,false);
+        fileNotReadable.setExecutable(false,false);
+        notExisting = new File(subPath.replace('a', 'b'));
         return Arrays.asList(new Object[][]{
                 {null,-2},
                 {file, 1},
-                {notExisting, -1}
+                {notExisting, -1},
+                {fileNotReadable,1}
         });
     }
 
@@ -62,10 +78,7 @@ public class TestHardLink extends TestCase{
 
         int actual = 0;
         try {
-
             actual = HardLink.getLinkCount(this.firstParam);
-
-
         } catch(FileNotFoundException e){
             actual = -1;
         } catch (IOException e) {

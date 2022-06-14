@@ -1259,7 +1259,7 @@
 
     <!-- JaCoCo profile -->
     <profile>
-      <id>JaCoCo-coverage</id>
+      <id>jacococoverage</id>
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>

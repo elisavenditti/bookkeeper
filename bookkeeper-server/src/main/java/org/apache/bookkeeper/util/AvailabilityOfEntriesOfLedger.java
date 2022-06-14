@@ -407,6 +407,7 @@ public class AvailabilityOfEntriesOfLedger {
                     if (availabilityOfEntries.get(bitSetIndex)) {
                         unavailableEntries.add(entryId);
                     }
+                    //ritorna null se questa chiave non c'è
                     if (sortedSequenceGroups.ceilingEntry(entryId) == null) {
                         noSeqGroupRemaining = true;
                     }

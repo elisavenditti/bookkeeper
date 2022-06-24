@@ -51,7 +51,9 @@ public class TestHardLink extends TestCase{
         fileNotReadable = new File(subpath2);
         fileNotReadable.setReadable(false,false);
         fileNotReadable.setExecutable(false,false);
-        notExisting = new File(subPath.replace('a', 'b'));
+        String notExistingPathString = subPath.replace('e', 'b');
+        System.out.println(notExistingPathString);
+        notExisting = new File(notExistingPathString);
         return Arrays.asList(new Object[][]{
                 {null,-2},
                 {file, 1},

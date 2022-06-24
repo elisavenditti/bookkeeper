@@ -438,11 +438,15 @@
                 <param>org.apache.bookkeeper.util.AvailabilityOfEntriesOfLedger</param>
               </targetClasses>
               <targetTests>
-                <param>org.apache.bookkeeper.util.TestNetworkTopologyImpl</param>
+                <param>org.apache.bookkeeper.util.TestParamAvailabilityOfEntryOfLedger</param>
+                <param>org.apache.bookkeeper.util.TestAvailability</param>
+                <param>org.apache.bookkeeper.util.TestHardLink</param>
+                <param>org.apache.bookkeeper.util.TestHardLinkCreation</param>
               </targetTests>
               <avoidCallsTo>
                 <avoidCallsTo>org.slf4j</avoidCallsTo>
               </avoidCallsTo>
+              <verbose>true</verbose>
             </configuration>
             <executions>
               <execution>

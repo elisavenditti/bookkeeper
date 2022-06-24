@@ -28,7 +28,7 @@ public class TestAvailability extends TestCase {
                 {lastConfirmed+1, false},
                 {-2L, false},
                 {1, false},
-                {lastConfirmed-1, true},
+                {lastConfirmed-1, true}
         });
     }
 

@@ -401,7 +401,7 @@ public class AvailabilityOfEntriesOfLedger {
                 }
                 continue;
             }
-            if ((curSeqGroup == null) || (entryId > curSeqGroup.getLastEntryInSequenceGroup())) {
+            if ((curSeqGroup == null) || (entryId >= curSeqGroup.getLastEntryInSequenceGroup())) {
                 Entry<Long, SequenceGroup> curSeqGroupEntry = sortedSequenceGroups.floorEntry(entryId);
                 if (curSeqGroupEntry == null) {
                     if (availabilityOfEntries.get(bitSetIndex)) {

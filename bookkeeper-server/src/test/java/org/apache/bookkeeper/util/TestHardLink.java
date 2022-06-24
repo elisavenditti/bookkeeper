@@ -13,8 +13,6 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.attribute.PosixFileAttributes;
-import java.nio.file.attribute.PosixFilePermission;
 import java.util.*;
 
 @RunWith(Parameterized.class)
@@ -36,7 +34,7 @@ public class TestHardLink extends TestCase{
             int totalLen = path.length();
             subPath = path.substring(0, totalLen-len);
             subpath2 = subPath+"notRead.txt";
-            subPath = subPath + "prova.txt";
+            subPath = subPath + "file.txt";
             System.out.println(subPath);
 
             Path p = Paths.get(subPath);
@@ -76,7 +74,7 @@ public class TestHardLink extends TestCase{
     @Test
     public void testHardLink(){
 
-        int actual = 0;
+        int actual;
         try {
             actual = HardLink.getLinkCount(this.firstParam);
         } catch(FileNotFoundException e){
@@ -90,6 +88,21 @@ public class TestHardLink extends TestCase{
 
 
 
+    }
+
+    @AfterClass
+    public static void reset() throws IOException {
+        String path = new File(".\\").getCanonicalPath();
+        int len = "bookkeeper\\bookkeeper-server".length();
+        int totalLen = path.length();
+        String subPath = path.substring(0, totalLen-len);
+        String subPath1 = subPath + "notRead.txt";
+        String subPath2 = subPath + "file.txt";
+
+        Path p1 = Paths.get(subPath1);
+        Files.delete(p1);
+        Path p2= Paths.get(subPath2);
+        Files.delete(p2);
     }
 
 }

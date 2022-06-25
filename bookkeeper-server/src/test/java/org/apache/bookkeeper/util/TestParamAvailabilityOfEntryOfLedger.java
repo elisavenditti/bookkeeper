@@ -5,15 +5,14 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import junit.framework.TestCase;
 import org.junit.Test;
-
-import java.security.GeneralSecurityException;
 import java.util.*;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
-public class TestParamAvailabilityOfEntryOfLedger extends TestCase {
+public class TestParamAvailabilityOfEntryOfLedger  extends TestCase{
 
 
     private AvailabilityOfEntriesOfLedger availabilityOfEntriesOfLedger;

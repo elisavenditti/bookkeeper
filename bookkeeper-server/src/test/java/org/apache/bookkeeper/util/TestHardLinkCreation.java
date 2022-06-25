@@ -61,12 +61,12 @@ public class TestHardLinkCreation extends TestCase{
                 {null, file, -2},
                 {file, new File(subPath2), 0},
                 {file, null, -2},
-//                {file,file,-2},
-//                {new File("non esiste"), null, -1},
-//                {new File("non esiste"), file, -1},
-//                {file, new File(subPath2), -2},
-//                {file, fileNotReadable,-2},
-//                {file, new File("non\"\"> esiste"), -2}
+                {file,file,-2},
+                {new File("non esiste"), null, -1},
+                {new File("non esiste"), file, -1},
+                {file, new File(subPath2), -2},
+                {file, fileNotReadable,-2}
+                //{file, new File("non\"\"> esiste"), -2}
 
         });
     }
